@@ -3,13 +3,7 @@ FROM alpine:3.14
 USER root
 
 RUN \
-    apk add --no-cache bash sudo wget curl vim openssl ca-certificates iputils zip unzip gnupg && \
-    adduser -D -h /home/slave -s /bin/bash slave && \
-    addgroup slave wheel && \
-    echo "slave:password" | chpasswd && \
-    sed -i '/%wheel ALL=(ALL) ALL/s/^# //' /etc/sudoers && \
-    mkdir /home/slave/.ssh && \
-    chown -R slave:slave /home/slave
+    apk add --no-cache bash sudo wget curl vim openssl ca-certificates iputils zip unzip gnupg 
 
 COPY ./env_script.sh /usr/local/bin/
 COPY ./ct_packandsend /usr/local/bin/
@@ -46,4 +40,3 @@ ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
 
 RUN chown -R slave:slave $SLAVE_HOME 
 
-USER SLAVE

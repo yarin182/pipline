@@ -23,22 +23,22 @@ RUN echo "Installation is complete"
 
 RUN mkdir -p /var/lib/slave 
 
-# RUN echo "Downloading ivy2 dir"
+RUN echo "Downloading ivy2 dir"
 
-# RUN \
-#     wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/ivy2.tar.gz -O /var/lib/jenkins/ivy2.tar.gz && \
-#     tar -xvf /var/lib/jenkins/ivy2.tar.gz -C /var/lib/jenkins/ && \
-#     mv /var/lib/jenkins/ivy2 /var/lib/jenkins/.ivy2 
+RUN \
+    wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/ivy2.tar.gz -O /var/lib/slave/ivy2.tar.gz && \
+    tar -xvf /var/lib/slave/ivy2.tar.gz -C /var/lib/slave/ && \
+    mv /var/lib/slave/ivy2 /var/lib/slave/.ivy2 
 
 RUN echo "Downloading scripts dir"
 
 RUN \
-    wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/scripts_jenkins.tar.gz -O /var/lib/jenkins/scripts.tar.gz && \
-    tar -xvf /var/lib/jenkins/scripts.tar.gz -C /var/lib/jenkins/
+    wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/scripts_jenkins.tar.gz -O /var/lib/slave/scripts.tar.gz && \
+    tar -xvf /var/lib/slave/scripts.tar.gz -C /var/lib/slave/
 
 RUN echo "Downloading mysql-connecter jar"
 
-RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connector-java-8.0.25.jar -O /var/lib/jenkins/mysql-connector-java-8.0.25.jar 
+RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connector-java-8.0.25.jar -O /var/lib/slave/mysql-connector-java-8.0.25.jar 
 
 ENV HOME /var/lib/slave
 ENV SLAVE_HOME /var/lib/slave

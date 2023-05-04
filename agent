@@ -5,8 +5,8 @@ pipeline {
         stage('Build and Run Docker Image') {
             steps {
                 script {
-                    docker.build('my-image', '.')
-                    docker.image('my-image').run()
+                    docker.build('slave', '.')
+                    docker.image('slave').run()
                 }
             }
         }

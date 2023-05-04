@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build and Run Docker Image') {
+            steps {
+                script {
+                    docker.build('my-image', '.')
+                    docker.image('my-image').run()
+                }
+            }
+        }
+    }
+}

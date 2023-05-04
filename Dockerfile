@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine/alpine:latest
 
 USER root
 

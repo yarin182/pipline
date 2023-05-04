@@ -2,7 +2,7 @@ FROM alpine:latest
 
 USER root
 
-RUN apk add --no-cache bash sudo wget curl vim openssl ca-certificates iputils zip unzip gnupg subversion
+RUN apk add --no-cache bash sudo wget curl vim openssl ca-certificates iputils zip unzip gnupg subversion dos2unix
 
 COPY ./env_script.sh /usr/local/bin/
 COPY ./ct_packandsend /usr/local/bin/

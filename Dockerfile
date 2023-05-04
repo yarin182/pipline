@@ -30,9 +30,7 @@ RUN \
 
 RUN echo "Download is complete, Installing Java-8"
 
-RUN \
-    update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_371/jre/bin/java" 1 && \
-    update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0_371/bin/javac" 1
+RUN apk add --no-cache openjdk8-jre
 
 RUN echo "Finished installation of Java-8"
 

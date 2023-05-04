@@ -1,0 +1,53 @@
+#!/bin/bash
+
+set -x
+cd /var/lib/jenkins/scripts/
+for i in JOB_NAME BUILD_TAG WORKSPACE; do
+	eval x=\$$i;
+	if [ "$x" == "" ]; then
+		"Missinig \$$i variable"
+		exit 1
+	fi
+done
+echo "JOB_NAME: $JOB_NAME"
+echo "BUILD_TAG: $BUILD_TAG"
+if [ -f ./${JOB_NAME}.pre.sh ]; then
+	. ./${JOB_NAME}.pre.sh
+	ret=$?
+	[ $ret -ne 0 ] && exit $ret
+fi 
+if [ "$EXT_LIB_COMPARE" == "true" ]; then
+	if [ "$EXT_LIB_REMOTE_SERVER_PORT" == "" ]; then
+		EXT_LIB_REMOTE_SERVER_PORT=22
+	fi
+	cd $WORKSPACE/buildtools/Version.$BUILD_ID-$SVN_REVISION.$deploy_name2/Tomcat/communitake/lib/lib
+	/var/lib/jenkins/scripts/checksum.sh $EXT_LIB_REMOTE_SERVER $EXT_LIB_REMOTE_SERVER_PORT
+	cd $OLDPWD
+fi
+
+cd $WORKSPACE/buildtools
+DIRS=`find . -maxdepth 1 -type d -iname 'Version*'  -exec basename '{}' \;`
+for i in $DIRS; do
+	echo "Checking $i"
+	TEMP=`find $i -maxdepth 1 -type d -iname 'Version*' | wc -l`
+	if [ $TEMP -gt 1 ]; then
+		echo "Going into $i"
+		cd $i
+		SUBDIRS=`find . -maxdepth 1 -type d -iname 'Version*'  -exec basename '{}' \;`
+		for j in $SUBDIRS; do
+			echo "compressing relay folder $j"
+			tar -zcf ../$j.tgz $j
+		done
+		cd ../
+	else
+		echo "compressing version folder $i"
+		tar -zcf $i.tgz $i
+	fi
+done
+
+cd /var/lib/jenkins/scripts/
+if [ -f ./${JOB_NAME}.post.sh ]; then
+	. ./${JOB_NAME}.post.sh
+fi 
+
+

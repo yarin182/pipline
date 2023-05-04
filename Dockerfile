@@ -23,12 +23,12 @@ RUN echo "Installation is complete"
 
 RUN mkdir -p /var/lib/slave 
 
-RUN echo "Downloading ivy2 dir"
+# RUN echo "Downloading ivy2 dir"
 
-RUN \
-    wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/ivy2.tar.gz -O /var/lib/jenkins/ivy2.tar.gz && \
-    tar -xvf /var/lib/jenkins/ivy2.tar.gz -C /var/lib/jenkins/ && \
-    mv /var/lib/jenkins/ivy2 /var/lib/jenkins/.ivy2 
+# RUN \
+#     wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/ivy2.tar.gz -O /var/lib/jenkins/ivy2.tar.gz && \
+#     tar -xvf /var/lib/jenkins/ivy2.tar.gz -C /var/lib/jenkins/ && \
+#     mv /var/lib/jenkins/ivy2 /var/lib/jenkins/.ivy2 
 
 RUN echo "Downloading scripts dir"
 

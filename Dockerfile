@@ -7,11 +7,13 @@ RUN \
     apt-get install -y --no-install-recommends apt-utils && \
     apt-get install -y bash ssh sudo apt-transport-https software-properties-common wget curl vim dos2unix openssl ca-certificates iputils-ping zip unzip gnupg
 
-RUN echo "Finished Installing Packages"
+RUN echo "Packages Installed successfully"
 
 COPY ./env_script.sh /usr/local/bin/
 COPY ./ct_packandsend /usr/local/bin/
 COPY ./docker_installation.sh /usr/local/bin/
+
+RUN echo "Installing AWS CLI, this may take a while"
 
 RUN \
     mkdir -p /usr/share/jenkins && \
@@ -22,11 +24,13 @@ RUN \
     unzip /usr/share/jenkins/aws.zip -d /usr/share/jenkins/ && \
     /usr/share/jenkins/aws/install
 
+RUN echo "AWS CLI Installed successfully"
+
 RUN echo "Installing Java-11, this may take a while"
 
 RUN apt-get install -y openjdk-11-jdk
 
-RUN echo "Finished installation of Java-11"
+RUN echo "Java-11 Installed successfully"
 
 RUN echo "Downloading Java-8"
 
@@ -42,7 +46,7 @@ RUN \
     update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_371/jre/bin/java" 1 && \
     update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0_371/bin/javac" 1
 
-RUN echo "Finished installation of Java-8"
+RUN echo "Java-8 Installed successfully"
 
 RUN mkdir -p /var/lib/slave
 
@@ -68,7 +72,7 @@ RUN echo "Installing Docker"
 WORKDIR /usr/local/bin
 RUN ./docker_installation.sh
 
-RUN echo "Finished Installing Docker"
+RUN echo "Docker Installed successfully"
 
 ENV HOME /var/lib/slave
 ENV SLAVE_HOME /var/lib/slave

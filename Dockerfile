@@ -59,7 +59,8 @@ RUN echo "Downloading mysql-connecter jar"
 
 RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connector-java-8.0.25.jar -O /var/lib/slave/mysql-connector-java-8.0.25.jar
 
-RUN (cd /usr/local/bin/; ./docker_installation.sh)
+WORKDIR /usr/local/bin
+RUN ./docker_installation.sh
 
 ENV HOME /var/lib/slave
 ENV SLAVE_HOME /var/lib/slave

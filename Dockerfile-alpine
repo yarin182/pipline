@@ -6,10 +6,12 @@ RUN echo "Installing Packages"
 
 RUN apk add --no-cache ssh bash wget curl ca-certificates zip unzip subversion dos2unix
 
-RUN echo "Finished Installing Packages"
+RUN echo "Packages Installed successfully"
 
 COPY ./env_script.sh /usr/local/bin/
 COPY ./ct_packandsend /usr/local/bin/
+
+RUN echo "Installing AWS CLI, this may take a while"
 
 RUN \
     mkdir -p /usr/share/jenkins && \
@@ -19,11 +21,13 @@ RUN \
     unzip /usr/share/jenkins/aws.zip -d /usr/share/jenkins/ && \
     /usr/share/jenkins/aws/install
 
+RUN echo "AWS CLI Installed successfully"
+
 RUN echo "Installing Java 11 and 8, this may take a while"
 
 RUN apk add --no-cache openjdk11 openjdk8-jre
 
-RUN echo "Installation is complete"
+RUN echo "Java 11 and 8 Installed successfully"
 
 RUN mkdir -p /var/lib/slave 
 

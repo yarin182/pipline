@@ -1,9 +1,13 @@
 FROM ubuntu:latest
 
+RUN echo "Installing Packages"
+
 RUN \
     apt-get update && \
     apt-get install -y --no-install-recommends apt-utils && \
     apt-get install -y bash ssh sudo apt-transport-https software-properties-common wget curl vim dos2unix openssl ca-certificates iputils-ping zip unzip gnupg
+
+RUN echo "Finished Installing Packages"
 
 COPY ./env_script.sh /usr/local/bin/
 COPY ./ct_packandsend /usr/local/bin/
@@ -59,8 +63,12 @@ RUN echo "Downloading mysql-connecter jar"
 
 RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connector-java-8.0.25.jar -O /var/lib/slave/mysql-connector-java-8.0.25.jar
 
+RUN echo "Installing Docker"
+
 WORKDIR /usr/local/bin
 RUN ./docker_installation.sh
+
+RUN echo "Finished Installing Docker"
 
 ENV HOME /var/lib/slave
 ENV SLAVE_HOME /var/lib/slave

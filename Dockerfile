@@ -77,3 +77,5 @@ RUN echo "Docker Installed successfully"
 ENV HOME /var/lib/slave
 ENV SLAVE_HOME /var/lib/slave
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
+
+WORKDIR /

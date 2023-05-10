@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build, Run, Tag, and Push Docker Image') {
+            steps {
+                script {
+                    def imageName = "yarinct/jenkins-ssh-slave"
+                    def dockerfileDir = "."
+                    def dockerTag = "latest"
+                    def dockerImage = docker.build(imageName, dockerfileDir)
+                    dockerImage.run() // Run the Docker image
+                    dockerImage.push() // Push the image to Docker Hub
+                    dockerImage.tag("${imageName}:${dockerTag}") // Tag the image with the latest tag

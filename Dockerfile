@@ -53,7 +53,7 @@ RUN \
 RUN echo "Java-8 Installed successfully"
 
 RUN mkdir -p /var/lib/slave
-RUN chown -R jenkins:jenkins /var/lib/slave && find /var/lib/slave/ -depth -exec chown -R jenkins:jenkins {} \;
+RUN chown -R jenkins:jenkins /var/lib/slave
 
 RUN echo "Downloading ivy2 dir"
 
@@ -76,3 +76,7 @@ ENV HOME /var/lib/slave
 ENV SLAVE_HOME /var/lib/slave
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
 ENV JENKINS_AGENT_SSH_PUBKEY ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhD7lKrqJwPrttPKlv34IwnU3DPvw6TStvvPifiWpWCcvziy5YhTi9gqUB6h3efTu88pKk7ufJzK1ji83aHq42fz24aWQtt24XC8q7cDB8eVQRvF5s2JieEiG+aWuAEqin8SZhn44f+LW182erDgpR65dZ2V7mDAlGZ6vJWPZ2OGMNbGQanyuh34g+2zMRZ2InOwF231bB2VgR/ud8D2DNapV9nazY7kPkH69EZHdK7r0nGC2IoGQY2Ec4AaqPrKgb7YrKvjoLPmSyriPdbEJwyF3WZFaXrxTBMeJGUqHnw3vVzG6CJM44bgC9RsNuyVbR5tNYcKD2+2kgQ3efGu68Q== root@agent.intactnet.net
+
+RUN chown -R jenkins:jenkins /var/lib/slave && find /var/lib/slave/ -depth -exec chown -R jenkins:jenkins {} \;
+
+USER JENKINS

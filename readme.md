@@ -1,4 +1,4 @@
-## Building the Jenkins SSH Agent Docker
+## Build the Jenkins SSH Agent Docker
 
 ### Bulid and Push the Jenkins-SSH-Agent Image
 

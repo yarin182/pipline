@@ -13,15 +13,9 @@ RUN \
 
 RUN echo "Packages Installed successfully"
 
-COPY ./env_script.sh /usr/local/bin/
-COPY ./ct_packandsend /usr/local/bin/
-COPY ./docker_installation.sh /usr/local/bin/
-COPY ./env_script.sh /home/jenkins/
-COPY ./ct_packandsend /home/jenkins/
-COPY ./docker_installation.sh /home/jenkins/
-COPY ./env_script.sh /var/lib/agent/
-COPY ./ct_packandsend /var/lib/agent/
-COPY ./docker_installation.sh /var/lib/agent/
+COPY ./scripts/* /usr/local/bin/
+COPY ./scripts/* /home/jenkins/
+COPY ./scripts/* /var/lib/agent/
 
 RUN echo "Installing AWS CLI, this may take a while"
 

@@ -9,6 +9,13 @@ pipeline {
                     def dockerfileDir = "."
                     def dockerTag = "latest"
                     def dockerImage = docker.build(imageName, dockerfileDir)
+
                     dockerImage.run() // Run the Docker image
                     dockerImage.push() // Push the image to Docker Hub
                     dockerImage.tag("${imageName}:${dockerTag}") // Tag the image with the latest tag
+                    dockerImage.push("${imageName}:${dockerTag}") // Push the tagged image to Docker Hub
+                }
+            }
+        }
+    }
+}

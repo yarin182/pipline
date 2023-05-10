@@ -20,7 +20,9 @@ Under script path, Choose the pipline script that's on git
 ### 6.
 The script will build the SSH-Slave image and push it to docker-hub
 
+
 ### Installing Docker on the agent you want to run the slave on
+
 ### 1. Install Docker on the slave machine
 
 ### 2. After installing, enable the docker API to listen on port 4243 by editing this file
@@ -37,6 +39,7 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
 ```
 
 ### Configure Clouds
+
 ### 1.
 In Jenkins Go to Manage Jenkins > Nodes, Choose Configure Clouds
 

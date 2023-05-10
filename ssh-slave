@@ -7,6 +7,9 @@ pipeline {
                 script {
                     docker.build('ssh-slave', '.')
                     docker.image('ssh-slave').run()
+                    withDockerRegistry([credentialsId: "yarinct-docker", urL:"yarinct/jenkins-ssh-slave:latest"]) {
+                    dockerImage.push()
+                    
                 }
             }
         }

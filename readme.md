@@ -61,6 +61,9 @@ Lables: slave
 Name: slave
 Docker Image: DOCKER-IMAGE tag on DockerHub
 Credentials: Add DockerHub Credentials
+Container settings -->
+Port bindings: 3100:3100
+Extra Hosts: host.docker.internal:host-gateway
 Remote File System Root: /var/lib/slave/
 Connect method: Connect with SSH
 Add SSH Credentials

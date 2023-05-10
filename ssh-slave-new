@@ -10,7 +10,7 @@ pipeline {
                     def dockerTag = "latest"
                     def dockerImage = docker.build("${imageName}:${dockerTag}", dockerfileDir)
 
-                    withDockerRegistry([credentialsId: "yarinctdockertoken", url: "https://registry.hub.docker.com"]) {
+                    withDockerRegistry([credentialsId: "yarinct-docker", url: "https://registry.hub.docker.com"]) {
                         dockerImage.push()
                     }
                 }

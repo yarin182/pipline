@@ -19,9 +19,9 @@ COPY ./docker_installation.sh /usr/local/bin/
 COPY ./env_script.sh /home/jenkins/
 COPY ./ct_packandsend /home/jenkins/
 COPY ./docker_installation.sh /home/jenkins/
-COPY ./env_script.sh /var/lib/slave/
-COPY ./ct_packandsend /var/lib/slave/
-COPY ./docker_installation.sh /var/lib/slave/
+COPY ./env_script.sh /var/lib/agent/
+COPY ./ct_packandsend /var/lib/agent/
+COPY ./docker_installation.sh /var/lib/agent/
 
 RUN echo "Installing AWS CLI, this may take a while"
 
@@ -33,9 +33,9 @@ RUN \
     chmod +x /home/jenkins/env_script.sh && \
     chmod +x /home/jenkins/ct_packandsend && \
     chmod +x /home/jenkins/docker_installation.sh && \
-    chmod +x /var/lib/slave/env_script.sh && \
-    chmod +x /var/lib/slave/ct_packandsend && \
-    chmod +x /var/lib/slave/docker_installation.sh && \
+    chmod +x /var/lib/agent/env_script.sh && \
+    chmod +x /var/lib/agent/ct_packandsend && \
+    chmod +x /var/lib/agent/docker_installation.sh && \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/usr/share/jenkins/aws.zip" && \
     unzip /usr/share/jenkins/aws.zip -d /usr/share/jenkins/ && \
     /usr/share/jenkins/aws/install
@@ -64,8 +64,8 @@ RUN \
 
 RUN echo "Java-8 Installed successfully"
 
-RUN mkdir -p /var/lib/slave
-RUN chown -R jenkins:jenkins /var/lib/slave
+RUN mkdir -p /var/lib/agent
+RUN chown -R jenkins:jenkins /var/lib/agent
 
 RUN echo "Downloading ivy2 dir"
 
@@ -84,10 +84,9 @@ RUN echo "Downloading mysql-connecter jar"
 
 RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connector-java-8.0.25.jar -O /home/jenkins/mysql-connector-java-8.0.25.jar
 
-ENV HOME /var/lib/slave
-ENV SLAVE_HOME /var/lib/slave
+ENV HOME /var/lib/agent
+ENV AGENT_HOME /var/lib/agent
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
-ENV JENKINS_AGENT_SSH_PUBKEY ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhD7lKrqJwPrttPKlv34IwnU3DPvw6TStvvPifiWpWCcvziy5YhTi9gqUB6h3efTu88pKk7ufJzK1ji83aHq42fz24aWQtt24XC8q7cDB8eVQRvF5s2JieEiG+aWuAEqin8SZhn44f+LW182erDgpR65dZ2V7mDAlGZ6vJWPZ2OGMNbGQanyuh34g+2zMRZ2InOwF231bB2VgR/ud8D2DNapV9nazY7kPkH69EZHdK7r0nGC2IoGQY2Ec4AaqPrKgb7YrKvjoLPmSyriPdbEJwyF3WZFaXrxTBMeJGUqHnw3vVzG6CJM44bgC9RsNuyVbR5tNYcKD2+2kgQ3efGu68Q== agent
+ENV JENKINS_AGENT_SSH_PUBKEY ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhD7lKrqJwPrttPKlv34IwnU3DPvw6TStvvPifiWpWCcvziy5YhTi9gqUB6h3efTu88pKk7ufJzK1ji83aHq42fz24aWQtt24XC8q7cDB8eVQRvF5s2JieEiG+aWuAEqin8SZhn44f+LW182erDgpR65dZ2V7mDAlGZ6vJWPZ2OGMNbGQanyuh34g+2zMRZ2InOwF231bB2VgR/ud8D2DNapV9nazY7kPkH69EZHdK7r0nGC2IoGQY2Ec4AaqPrKgb7YrKvjoLPmSyriPdbEJwyF3WZFaXrxTBMeJGUqHnw3vVzG6CJM44bgC9RsNuyVbR5tNYcKD2+2kgQ3efGu68Q== root@agent.intactnet.net
 
-RUN chown -R jenkins:jenkins /var/lib/slave/*
-
+RUN chown -R jenkins:jenkins /var/lib/agent/*

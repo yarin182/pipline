@@ -1,6 +1,6 @@
 ## Building the Jenkins Slave Docker
 
-## Buliding the Jenkins-SSH-Slave Image through the Jenkins Pipline===
+### Buliding the Jenkins-SSH-Slave Image through the Jenkins Pipline
 
 ## 1. In Jenkins Go to Dashboard > Internal, Choose New Item - Pipline
 

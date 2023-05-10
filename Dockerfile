@@ -53,7 +53,7 @@ RUN \
 RUN echo "Java-8 Installed successfully"
 
 RUN mkdir -p /var/lib/slave
-RUN chown -R jenkins:jenkins /var/lib/slave && chown -R jenkins:jenkins /var/lib/slave/* && find /var/lib/slave/ -depth -exec chown -R jenkins:jenkins {} \;
+RUN chown -R jenkins:jenkins /var/lib/slave && find /var/lib/slave/ -depth -exec chown -R jenkins:jenkins {} \;
 
 RUN echo "Downloading ivy2 dir"
 

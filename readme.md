@@ -1,6 +1,6 @@
 ## Build the Jenkins SSH Agent Docker
 
-### Bulid and Push the Jenkins-SSH-Agent Image
+### Bulid and Push the Jenkins SSH Agent Image
 
 ### 1.
 In Jenkins Go to Dashboard > Internal, Choose New Item - Pipline
@@ -18,7 +18,7 @@ Enter the Repository URL and Credentials
 Under script path, Choose the pipline script that's on git
 
 ### 6.
-The script will build the SSH-Agent image and push it to docker-hub
+The script will build the SSH Agent image and push it to docker-hub
 
 
 ### Docker Installation
@@ -66,7 +66,7 @@ Credentials: Add DockerHub Credentials
 Container settings -->
 Port bindings: 3100:3100
 Extra Hosts: host.docker.internal:host-gateway
-Remote File System Root: /var/lib/slave/
+Remote File System Root: /var/lib/agent/
 Connect method: Connect with SSH
 Add SSH Credentials
 Host Key Verification Strategy: Non verifying Verification Strategy

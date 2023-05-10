@@ -23,9 +23,11 @@ The script will build the SSH-Slave image and push it to docker-hub
 
 ### Docker Installation
 
-### 1. Install Docker on the slave machine you want Jenkins to build on
+### 1.
+Install Docker on the slave machine you want Jenkins to build on
 
-### 2. After installing, enable the docker API to listen on port 4243 by editing this file
+### 2.
+After installing, enable the docker API to listen on port 4243 by editing this file
 
 Line 13
 ```

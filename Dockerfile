@@ -27,9 +27,9 @@ RUN \
     chmod +x /usr/local/bin/env_script.sh && \
     chmod +x /usr/local/bin/ct_packandsend && \
     chmod +x /usr/local/bin/docker_installation.sh && \
-    chmod +x /var/lib/slave/env_script.sh && \
-    chmod +x /var/lib/slave/ct_packandsend && \
-    chmod +x /var/lib/slave/docker_installation.sh && \
+    chmod +x /home/jenkins/env_script.sh && \
+    chmod +x /home/jenkins/ct_packandsend && \
+    chmod +x /home/jenkins/docker_installation.sh && \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/usr/share/jenkins/aws.zip" && \
     unzip /usr/share/jenkins/aws.zip -d /usr/share/jenkins/ && \
     /usr/share/jenkins/aws/install

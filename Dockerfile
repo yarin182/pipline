@@ -16,9 +16,9 @@ RUN echo "Packages Installed successfully"
 COPY ./env_script.sh /usr/local/bin/
 COPY ./ct_packandsend /usr/local/bin/
 COPY ./docker_installation.sh /usr/local/bin/
-COPY ./env_script.sh /var/lib/slave/
-COPY ./ct_packandsend /var/lib/slave/
-COPY ./docker_installation.sh /var/lib/slave/
+COPY ./env_script.sh /home/jenkins/
+COPY ./ct_packandsend /home/jenkins/
+COPY ./docker_installation.sh /home/jenkins/
 
 RUN echo "Installing AWS CLI, this may take a while"
 
@@ -64,19 +64,19 @@ RUN chown -R jenkins:jenkins /var/lib/slave
 RUN echo "Downloading ivy2 dir"
 
 RUN \
-    wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/ivy2.tar.gz -O /var/lib/slave/ivy2.tar.gz && \
-    tar -xvf /var/lib/slave/ivy2.tar.gz -C /var/lib/slave/ && \
-    mv /var/lib/slave/ivy2 /var/lib/slave/.ivy2
+    wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/ivy2.tar.gz -O /home/jenkins/ivy2.tar.gz && \
+    tar -xvf /home/jenkins/ivy2.tar.gz -C /home/jenkins/ && \
+    mv /home/jenkins/ivy2 /home/jenkins/.ivy2
 
 RUN echo "Downloading scripts dir"
 
 RUN \
-    wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/scripts_jenkins.tar.gz -O /var/lib/slave/scripts.tar.gz && \
-    tar -xvf /var/lib/slave/scripts.tar.gz -C /var/lib/slave/
+    wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/scripts_jenkins.tar.gz -O /home/jenkins/scripts.tar.gz && \
+    tar -xvf /home/jenkins/scripts.tar.gz -C /home/jenkins/
 
 RUN echo "Downloading mysql-connecter jar"
 
-RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connector-java-8.0.25.jar -O /var/lib/slave/mysql-connector-java-8.0.25.jar
+RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connector-java-8.0.25.jar -O /home/jenkins/mysql-connector-java-8.0.25.jar
 
 ENV HOME /var/lib/slave
 ENV SLAVE_HOME /var/lib/slave

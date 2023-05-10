@@ -1,6 +1,6 @@
 ## Building the Jenkins Docker Slave
 
-### Buliding the Jenkins-SSH-Slave Image through the Jenkins Pipline
+### Bulid and Push the Jenkins-SSH-Slave Image
 
 ### 1.
 In Jenkins Go to Dashboard > Internal, Choose New Item - Pipline
@@ -21,9 +21,9 @@ Under script path, Choose the pipline script that's on git
 The script will build the SSH-Slave image and push it to docker-hub
 
 
-### Installing Docker on the agent you want to run the slave on
+### Docker Installation
 
-### 1. Install Docker on the slave machine
+### 1. Install Docker on the slave machine you want Jenkins to build on
 
 ### 2. After installing, enable the docker API to listen on port 4243 by editing this file
 

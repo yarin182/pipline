@@ -1,26 +1,14 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_HUB_CREDENTIALS = credentials('yarinct-docker')
-    }
-
     stages {
-        stage('Build, Run, Tag, and Push Docker Image') {
+        stage('Build and Run Docker Image') {
             steps {
                 script {
-                    def imageName = "yarinct/jenkins-ssh-slave"
-                    def dockerfileDir = "."
-                    def dockerTag = "latest"
-                    def dockerImage = docker.build(imageName, dockerfileDir)
-
-                    withCredentials([string(credentialsId: 'yarinct-docker', variable: 'DOCKER_HUB_CREDENTIALS')]) {
-                        docker.withRegistry("https://registry.hub.docker.com", "yarinct-docker") {
-                            dockerImage.run() // Run the Docker image
-                            dockerImage.push() // Push the image to Docker Hub
-                            dockerImage.tag("${imageName}:${dockerTag}") // Tag the image with the latest tag
-                            dockerImage.push("${imageName}:${dockerTag}") // Push the tagged image to Docker Hub
-                        }
+                    docker.build('ssh-slave', '.')
+                    docker.image('ssh-slave').run()
+                    withDockerRegistry([credentialsId: "yarinnewdockerhub", urL:"yarinct/jenkins-ssh-slave:latest"]) {
+                    dockerImage.push()
                     }
                 }
             }

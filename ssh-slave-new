@@ -11,7 +11,7 @@ pipeline {
                     def dockerImage = docker.build("${imageName}", dockerfileDir)
 
                     withDockerRegistry([credentialsId: "yarinct-docker", url: "https://registry.hub.docker.com"]) {
-                        dockerImage.push("${imageName}:${dockerTag}")
+                        dockerImage.push()
                     }
                 }
             }

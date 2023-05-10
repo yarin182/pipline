@@ -8,7 +8,7 @@ pipeline {
                     def imageName = "yarinct/jenkins-ssh-slave"
                     def dockerfileDir = "."
                     def dockerTag = "latest"
-                    def dockerImage = docker.build("yarinct/jenkins-ssh-slave, dockerfileDir)
+                    def dockerImage = docker.build("yarinct/jenkins-ssh-slave", dockerfileDir)
 
                     withDockerRegistry([credentialsId: "yarinct-docker", url: "https://registry.hub.docker.com"]) {
                         dockerImage.push()

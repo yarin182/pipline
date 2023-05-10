@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_HUB_CREDENTIALS = credentials('yarinct-docker')
+    }
+
     stages {
         stage('Build, Run, Tag, and Push Docker Image') {
             steps {
@@ -10,10 +14,14 @@ pipeline {
                     def dockerTag = "latest"
                     def dockerImage = docker.build(imageName, dockerfileDir)
 
-                    dockerImage.run() // Run the Docker image
-                    dockerImage.push() // Push the image to Docker Hub
-                    dockerImage.tag("${imageName}:${dockerTag}") // Tag the image with the latest tag
-                    dockerImage.push("${imageName}:${dockerTag}") // Push the tagged image to Docker Hub
+                    withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_HUB_CREDENTIALS')]) {
+                        docker.withRegistry("https://registry.hub.docker.com", "docker-hub-credentials") {
+                            dockerImage.run() // Run the Docker image
+                            dockerImage.push() // Push the image to Docker Hub
+                            dockerImage.tag("${imageName}:${dockerTag}") // Tag the image with the latest tag
+                            dockerImage.push("${imageName}:${dockerTag}") // Push the tagged image to Docker Hub
+                        }
+                    }
                 }
             }
         }

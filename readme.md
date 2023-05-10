@@ -1,4 +1,4 @@
-## Building the Jenkins Slave Docker
+## Building the Jenkins Docker Slave
 
 ### Buliding the Jenkins-SSH-Slave Image through the Jenkins Pipline
 

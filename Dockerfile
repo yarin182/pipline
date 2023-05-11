@@ -14,8 +14,8 @@ RUN \
 RUN echo "Packages Installed successfully"
 
 COPY ./scripts/* /usr/local/bin/
-COPY ./scripts/* /home/jenkins/
 COPY ./scripts/* /var/lib/agent/
+
 
 RUN echo "Installing AWS CLI, this may take a while"
 
@@ -24,12 +24,15 @@ RUN \
     chmod +x /usr/local/bin/env_script.sh && \
     chmod +x /usr/local/bin/ct_packandsend && \
     chmod +x /usr/local/bin/docker_installation.sh && \
-    chmod +x /home/jenkins/env_script.sh && \
-    chmod +x /home/jenkins/ct_packandsend && \
-    chmod +x /home/jenkins/docker_installation.sh && \
+    dos2unix /usr/local/bin/env_script.sh && \
+    dos2unix /usr/local/bin/ct_packandsend && \
+    dos2unix /usr/local/bin/docker_installation.sh && \
     chmod +x /var/lib/agent/env_script.sh && \
     chmod +x /var/lib/agent/ct_packandsend && \
     chmod +x /var/lib/agent/docker_installation.sh && \
+    dos2unix /var/lib/agent/env_script.sh && \
+    dos2unix /var/lib/agent/ct_packandsend && \
+    dos2unix /var/lib/agent/docker_installation.sh && \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/usr/share/jenkins/aws.zip" && \
     unzip /usr/share/jenkins/aws.zip -d /usr/share/jenkins/ && \
     /usr/share/jenkins/aws/install

@@ -1,5 +1,24 @@
 ## Build the Jenkins SSH Agent Docker
 
+### Docker Installation
+
+### 1.
+Install Docker on the agent machine you want Jenkins to build on
+
+### 2.
+After installing, enable the docker API to listen on port 4243 by editing this file
+
+Line 13
+```
+vim /lib/systemd/system/docker.service
+```
+
+Replace the line with
+
+```
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
+```
+
 ### Bulid and Push the Jenkins SSH Agent Image
 
 ### 1.
@@ -19,25 +38,6 @@ Under script path, Choose the pipline script that's on git
 
 ### 6.
 Click on Build Now,The script will build the SSH Agent image and push it to docker-hub
-
-### Docker Installation
-
-### 1.
-Install Docker on the agent machine you want Jenkins to build on
-
-### 2.
-After installing, enable the docker API to listen on port 4243 by editing this file
-
-Line 13
-```
-vim /lib/systemd/system/docker.service
-```
-
-Replace the line with
-
-```
-ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
-```
 
 ### Configure Clouds
 

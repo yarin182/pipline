@@ -59,8 +59,8 @@ Expose DOCKER_HOST: On
 Docker Agent templates Configuration
 
 ```
-Lables: agent
-Name: agent
+Lables: ssh-agent
+Name: ssh-agent
 Docker Image: DOCKER-IMAGE tag on DockerHub
 Credentials: Add DockerHub Credentials
 Container settings -->

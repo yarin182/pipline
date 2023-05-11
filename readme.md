@@ -65,7 +65,7 @@ Credentials: Add DockerHub Credentials
 Container settings -->
 Port bindings: 3100:3100
 Extra Hosts: host.docker.internal:host-gateway
-Remote File System Root: /var/lib/agent/
+Remote File System Root: /home/jenkins
 Connect method: Connect with SSH
 Add SSH Credentials
 Host Key Verification Strategy: Non verifying Verification Strategy

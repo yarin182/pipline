@@ -18,8 +18,7 @@ Enter the Repository URL and Credentials
 Under script path, Choose the pipline script that's on git
 
 ### 6.
-The script will build the SSH Agent image and push it to docker-hub
-
+Click on Build Now,The script will build the SSH Agent image and push it to docker-hub
 
 ### Docker Installation
 

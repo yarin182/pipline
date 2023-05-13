@@ -78,7 +78,7 @@ Port bindings: 3100:3100
 Extra Hosts: host.docker.internal:host-gateway
 Remote File System Root: /home/jenkins
 Connect method: Connect with SSH
-Add SSH Credentials - Add the Private Key you inserted as into the Dockerfile at Bulid and Push the Jenkins SSH Agent Image section step 5 
+Add SSH Credentials - Add the Private Key you inserted into the Dockerfile at Bulid and Push the Jenkins SSH Agent Image Section step 5 
 Host Key Verification Strategy: Non verifying Verification Strategy
 Advanced -->
 Port: 22

@@ -33,10 +33,21 @@ under SCM Choose Git
 ### 4.
 Enter the Repository URL and Credentials
 
-### 5.
-Under script path, Choose the pipline script that's on git
+### 5. 
+In the Git Repository, Insert the public key you want Jenkins to connect via SSH to the Agent Host 
+
+Line 13
+```
+vim Dockerfile
+```
+```
+JENKINS_AGENT_SSH_PUBKEY {public key}
+```
 
 ### 6.
+Under script path, Choose the pipline script that's on git
+
+### 7.
 Click on Build Now,The script will build the SSH Agent image and push it to docker-hub
 
 ### Configure Clouds
@@ -67,7 +78,7 @@ Port bindings: 3100:3100
 Extra Hosts: host.docker.internal:host-gateway
 Remote File System Root: /home/jenkins
 Connect method: Connect with SSH
-Add SSH Credentials
+Add SSH Credentials - Add the Private Key you inserted as into the Dockerfile at Bulid and Push the Jenkins SSH Agent Image section step 5 
 Host Key Verification Strategy: Non verifying Verification Strategy
 Advanced -->
 Port: 22

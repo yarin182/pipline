@@ -87,7 +87,7 @@ JavaPath: $JAVA_HOME/bin/java
 
 Click on save and apply
 
-===Build a Project with the SSH Agent===
+### Build a Project with the SSH Agent
 
 ### 1.
 In Jenkins, Go to the Project you want to build

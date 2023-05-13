@@ -36,10 +36,11 @@ Enter the Repository URL and Credentials
 ### 5. 
 In the Git Repository, Insert the public key you want Jenkins to connect via SSH to the Agent Host 
 
+Line 77
 ```
 vim Dockerfile
 ```
-Line 77
+Add the {public key} of your choice
 ```
 JENKINS_AGENT_SSH_PUBKEY {public key}
 ```

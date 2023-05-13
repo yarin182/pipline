@@ -86,3 +86,23 @@ JavaPath: $JAVA_HOME/bin/java
 ```
 
 Click on save and apply
+
+===Build a Project with the SSH Agent===
+
+### 1.
+In Jenkins, Go to the Project you want to build
+
+### 2.
+Open the configuration Panel for you job
+
+### 3.
+Under the General section: Check the option ''Restrict where this project can be run''
+
+### 4.
+Enter the label name configured in the Docker Agent templates Configuration above Under ''Lables'', in this case the label is ''ssh-agent''
+
+### 5.
+Click on save and apply
+
+### 6.
+Click on Build Now

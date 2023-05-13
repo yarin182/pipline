@@ -42,7 +42,7 @@ vim Dockerfile
 ```
 Add the {public key} of your choice
 ```
-JENKINS_AGENT_SSH_PUBKEY {public key}
+ENV JENKINS_AGENT_SSH_PUBKEY {public key}
 ```
 
 ### 6.

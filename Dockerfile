@@ -36,10 +36,11 @@ RUN echo "AWS CLI Installed successfully"
 
 RUN echo "Installing Docker"
 
-RUN \
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" && \
-    apt-get install -y docker-ce docker-compose
+RUN apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+Run curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+RUN sudo apt-get install -y docker-ce
+RUN sudo apt-get install -y docker-compose
 
 RUN echo "Docker Installed successfully"
 

@@ -19,6 +19,18 @@ Replace the line with
 ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
 ```
 
+## 3. Create a Jenkins user on the host
+
+```
+useradd jenkins
+```
+
+## 4. grant permissions for the Jenkins user
+
+```
+chown -R jenkins:jenkins /var/run/docker.sock
+```
+
 ### Bulid and Push the Jenkins SSH Agent Image
 
 ### 1.

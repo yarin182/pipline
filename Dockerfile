@@ -71,6 +71,12 @@ RUN echo "Downloading mysql-connecter jar"
 
 RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connector-java-8.0.25.jar -O /home/jenkins/mysql-connector-java-8.0.25.jar
 
+RUN echo "Installing Docker"
+
+RUN /home/jenkins/docker_installation.sh
+
+RUN echo "Docker Installed successfully"
+
 RUN echo "Deleting Unnecessary Files"
 
 RUN rm -rf /usr/share/jenkins/aws.zip  && rm -rf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && rm -rf /home/jenkins/ivy2.tar.gz && rm -rf scripts.tar.gz

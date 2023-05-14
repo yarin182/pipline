@@ -44,8 +44,7 @@ RUN echo "Downloading Java-8"
 
 RUN \
     wget https://s3-eu-west-1.amazonaws.com/com.communitake.private/f07211c7-8d66-4940-8082-d97978554673 -O /usr/lib/jvm/jdk-linux-x64.rpm && \
-    apt-get install -y /usr/lib/jvm/jdk-linux-x64.rpm && 
-    rm -f /usr/lib/jvm/jdk-linux-x64.rpm 
+    apt-get install -y /usr/lib/jvm/jdk-linux-x64.rpm  
 
 RUN echo "Download is complete, Installing Java-8"
 

@@ -71,7 +71,7 @@ RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connec
 
 RUN echo "Deleting Unnecessary Files"
 
-RUN rm -rf /usr/share/jenkins/aws.zip  && rm -rf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && rm -rf /home/jenkins/ivy2.tar.gz && rm -rf scripts.tar.gz
+RUN rm -rf /usr/share/jenkins/aws.zip && rm -rf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && rm -rf /home/jenkins/ivy2.tar.gz && rm -rf scripts.tar.gz
 
 ENV HOME /home/jenkins
 ENV AGENT_HOME /home/jenkins

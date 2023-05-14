@@ -40,8 +40,6 @@ RUN echo "Java-11 Installed successfully"
 
 RUN echo "Downloading Java-8"
 
-# COPY ./jdk-8u371-linux-aarch64.tar.gz /usr/lib/jvm/
-
 RUN \
     wget https://s3-eu-west-1.amazonaws.com/com.communitake.private/jdk-8u371-linux-x64.tar.gz -O /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && \
     tar -xvf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz -C /usr/lib/jvm/ 

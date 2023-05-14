@@ -102,4 +102,4 @@ RUN chown -R jenkins:jenkins /home/jenkins/ && find /home/jenkins/ -depth -exec 
 
 RUN chown -R jenkins:jenkins /var/lib/jenkins/ && find /var/lib/jenkins/ -depth -exec chown -R jenkins:jenkins {} \;
 
-RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/bin/java
+RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/jre/bin/java

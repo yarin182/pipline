@@ -73,7 +73,7 @@ RUN echo "Deleting Unnecessary Files"
 
 RUN rm -rf /usr/share/jenkins/aws.zip && rm -rf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && rm -rf /home/jenkins/ivy2.tar.gz && rm -rf scripts.tar.gz
 
-update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/jre/bin/java
+RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/jre/bin/java
 
 ENV HOME /home/jenkins
 ENV AGENT_HOME /home/jenkins

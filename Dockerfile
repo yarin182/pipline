@@ -100,6 +100,6 @@ ENV JENKINS_AGENT_SSH_PUBKEY ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhD7lKrqJwPrttPK
 
 RUN chown -R jenkins:jenkins /home/jenkins/ && find /home/jenkins/ -depth -exec chown -R jenkins:jenkins {} \;
 
-RUN chown -R jenkins:jenkins /var/lib/jenkins/ && find /var/lib/jenkins/ -depth -exec chown -R jenkins:jenkins {} \;
+RUN chown -R jenkins:jenkins /var/lib/jenkins && chown -R jenkins:jenkins /var/lib/jenkins/mysql-connector-java-8.0.25.jar
 
 RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/jre/bin/java

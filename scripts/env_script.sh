@@ -43,3 +43,4 @@ echo "SVN_FULL_URL=$SVN_FULL_URL" >> $propfile
 echo "deploy_name=$deploy_name" >> $propfile
 echo "deploy_name2=$deploy_name2" >> $propfile
 
+sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/jre/bin/java

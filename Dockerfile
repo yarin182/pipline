@@ -43,8 +43,8 @@ RUN echo "Downloading Java-8"
 # COPY ./jdk-8u371-linux-aarch64.tar.gz /usr/lib/jvm/
 
 RUN \
-    wget https://s3-eu-west-1.amazonaws.com/com.communitake.private/f07211c7-8d66-4940-8082-d97978554673 -O /usr/lib/jvm/jdk-linux-x64.rpm && \
-    apt-get install -y /usr/lib/jvm/jdk-linux-x64.rpm  
+    wget https://s3-eu-west-1.amazonaws.com/com.communitake.private/jdk-8u371-linux-x64.tar.gz -O /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && \
+    tar -xvf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz -C /usr/lib/jvm/ 
 
 RUN echo "Download is complete, Installing Java-8"
 

@@ -102,4 +102,4 @@ RUN chown -R jenkins:jenkins /home/jenkins/ && find /home/jenkins/ -depth -exec 
 
 RUN chown -R jenkins:jenkins /var/lib/jenkins && chown -R jenkins:jenkins /var/lib/jenkins/mysql-connector-java-8.0.25.jar
 
-RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/jre/bin/java
+# RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/jre/bin/java

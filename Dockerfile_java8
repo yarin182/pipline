@@ -1,4 +1,4 @@
-FROM jenkins/ssh-agent:latest-jdk8
+FROM jenkins/ssh-agent:latest
 
 RUN echo "Installing Packages"
 
@@ -34,25 +34,25 @@ RUN \
 
 RUN echo "AWS CLI Installed successfully"
 
-# # RUN echo "Installing Java-8, this may take a while"
+# RUN echo "Installing Java-8, this may take a while"
 
-# # RUN apt-get install -y openjdk-8-jdk
-
-# # RUN echo "Java-8 Installed successfully"
-
-# RUN echo "Downloading Java-8"
-
-# RUN \
-#     wget https://s3-eu-west-1.amazonaws.com/com.communitake.private/jdk-8u371-linux-x64.tar.gz -O /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && \
-#     tar -xvf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz -C /usr/lib/jvm/ 
-
-# RUN echo "Download is complete, Installing Java-8"
-
-# RUN \
-#     update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_371/jre/bin/java" 1 && \
-#     update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0_371/bin/javac" 1
+# RUN apt-get install -y openjdk-8-jdk
 
 # RUN echo "Java-8 Installed successfully"
+
+RUN echo "Downloading Java-8"
+
+RUN \
+    wget https://s3-eu-west-1.amazonaws.com/com.communitake.private/jdk-8u371-linux-x64.tar.gz -O /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && \
+    tar -xvf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz -C /usr/lib/jvm/ 
+
+RUN echo "Download is complete, Installing Java-8"
+
+RUN \
+    update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_371/jre/bin/java" 1 && \
+    update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0_371/bin/javac" 1
+
+RUN echo "Java-8 Installed successfully"
 
 RUN echo "Downloading ivy2 dir"
 

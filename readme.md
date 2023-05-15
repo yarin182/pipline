@@ -100,7 +100,6 @@ Add SSH Credentials - Add the Private Key you inserted into the Dockerfile at Bu
 Host Key Verification Strategy: Non verifying Verification Strategy
 Advanced -->
 Port: 22
-JavaPath: $JAVA_HOME/bin/java
 ```
 
 Click on save and apply

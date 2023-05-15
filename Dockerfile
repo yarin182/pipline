@@ -43,14 +43,14 @@ RUN echo "Java-11 Installed successfully"
 RUN echo "Downloading Java-8"
 
 RUN \
-    wget https://s3-eu-west-1.amazonaws.com/com.communitake.private/jdk-8u371-linux-x64.tar.gz -O /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz && \
-    tar -xvf /usr/lib/jvm/jdk-8u371-linux-x64.tar.gz -C /usr/lib/jvm/ 
+    wget https://s3-eu-west-1.amazonaws.com/com.communitake.private/jdk-8u121-linux-x64.tar.gz -O /usr/lib/jvm/jdk-8u121-linux-x64.tar.gz && \
+    tar -xvf /usr/lib/jvm/jdk-8u121-linux-x64.tar.gz -C /usr/lib/jvm/ 
 
 RUN echo "Download is complete, Installing Java-8"
 
 RUN \
-    update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_371/jre/bin/java" 1 && \
-    update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0_371/bin/javac" 1
+    update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_121/jre/bin/java" 1 && \
+    update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0_121/bin/javac" 1
 
 RUN echo "Java-8 Installed successfully"
 
@@ -102,4 +102,4 @@ RUN chown -R jenkins:jenkins /home/jenkins/ && find /home/jenkins/ -depth -exec 
 
 RUN chown -R jenkins:jenkins /var/lib/jenkins && chown -R jenkins:jenkins /var/lib/jenkins/mysql-connector-java-8.0.25.jar
 
-RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_371/jre/bin/java
+RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_121/jre/bin/java

@@ -16,7 +16,7 @@ RUN echo "Packages Installed successfully"
 COPY ./scripts/* /usr/local/bin/
 COPY ./scripts/* /home/jenkins/
 RUN mkdir -p /var/lib/jenkins
-
+RUN mkdir -p /usr/lib/jvm/
 
 RUN echo "Installing AWS CLI, this may take a while"
 

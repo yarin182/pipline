@@ -36,11 +36,16 @@ useradd jenkins
 Install AWS CLI on the host with aws configure
 
 ### 5.
+On KeyPass file servers2 goto Jenkins -> agent key
+
+### 6.
+copy the content of id_rsa file to the file /home/jenkins/.ssh/id_rsa
+
+### 7.
 grant permissions for the Jenkins user
 
 ```
-chown -R jenkins:jenkins ~/.aws && chown -R jenkins:jenkins ~/.aws/* && cp ~/.aws /home/jenkins/ && chown -R jenkins:jenkins /var/run/docker.sock
-```
+chown -R jenkins:jenkins ~/.aws && chown -R jenkins:jenkins ~/.aws/* && cp ~/.aws /home/jenkins/ && chown -R jenkins:jenkins /var/run/docker.sock && chmod 700 /home/jenkins/.ssh && chmod 600 /home/jenkins/.ssh/id_rsa && chown -R jenkins:jenkins /home/jenkins/.ssh && chown -R jenkins:jenkins /home/jenkins/.ssh/id_rsa```
 
 ### Bulid and Push the Jenkins SSH Agent Image
 

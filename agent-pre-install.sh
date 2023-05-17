@@ -15,5 +15,4 @@ useradd jenkins
 
 aws configure
 
-chown -R jenkins:jenkins ~/.aws && chown -R jenkins:jenkins ~/.aws/* && cp ~/.aws /home/jenkins/ && chown -R jenkins:jenkins /var/run/docker.sock
-
+chown -R jenkins:jenkins ~/.aws && chown -R jenkins:jenkins ~/.aws/* && cp ~/.aws /home/jenkins/ && chown -R jenkins:jenkins /var/run/docker.sock && chmod 700 /home/jenkins/.ssh && chmod 600 /home/jenkins/.ssh/id_rsa && chown -R jenkins:jenkins /home/jenkins/.ssh && chown -R jenkins:jenkins /home/jenkins/.ssh/id_rsa

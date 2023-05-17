@@ -19,7 +19,7 @@ Replace the line with
 ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
 ```
 
-## all steps including 5 can be skipped by running
+## all steps excluding 5 and 6 can be skipped by running
 
 ```
 ./agent-pre-install.sh

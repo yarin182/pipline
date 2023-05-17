@@ -41,6 +41,10 @@ On KeyPass file servers2 goto Jenkins -> agent key
 ### 6.
 copy the content of id_rsa file to the file /home/jenkins/.ssh/id_rsa
 
+```
+vim /home/jenkins/.ssh/id_rsa
+```
+
 ### 7.
 grant permissions for the Jenkins user
 

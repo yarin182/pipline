@@ -101,6 +101,7 @@ Credentials: Add DockerHub Credentials
 Container settings -->
 Mounts:
 type=bind,src=/home/jenkins/.aws/,dst=/home/jenkins/.aws/,bind-propagation=shared
+type=bind,src=/home/jenkins/.ssh/,dst=/home/jenkins/.ssh/,bind-propagation=shared
 type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock,bind-propagation=shared
 type=bind,src=/etc/localtime,dst=/etc/localtime,bind-propagation=shared
 Port bindings: 3100:3100

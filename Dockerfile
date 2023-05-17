@@ -92,13 +92,6 @@ RUN \
 
 RUN echo "Docker Installed successfully"
 
-RUN echo "Copying Private Key"
-
-COPY ./id_rsa /home/jenkins/.ssh/ 
-RUN chmod 600 /home/jenkins/.ssh/ 
-
-RUN echo "Private Key Copied successfully"
-
 ENV HOME /home/jenkins
 ENV AGENT_HOME /home/jenkins
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/

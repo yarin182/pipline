@@ -69,23 +69,11 @@ ENV JENKINS_AGENT_SSH_PUBKEY {public key}
 ```
 
 ### 6.
-On KeyPass file servers2 goto servers -> agent
-
-### 7. 
-copy the content of id_rsa file to the pipline project folder as id_rsa
-
-### 8.
 Under script path, Choose the pipline script that's on git
 
-### 9.
+### 7.
 Click on Build Now,The script will build the SSH Agent image and push it to docker-hub
 
-### 10.
-remove the id_rsa file
-
-```
-rm -rf id_rsa
-```
 
 ### Configure Clouds
 

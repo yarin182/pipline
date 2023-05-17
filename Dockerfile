@@ -17,7 +17,6 @@ COPY ./scripts/* /usr/local/bin/
 COPY ./scripts/* /home/jenkins/
 RUN mkdir -p /var/lib/jenkins
 
-
 RUN echo "Installing AWS CLI, this may take a while"
 
 RUN \
@@ -92,6 +91,13 @@ RUN \
     apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 RUN echo "Docker Installed successfully"
+
+RUN echo "Copying Private Key"
+
+COPY ./id_rsa /home/jenkins/.ssh/ 
+RUN chmod 600 /home/jenkins/.ssh/ 
+
+RUN echo "Private Key Copied successfully"
 
 ENV HOME /home/jenkins
 ENV AGENT_HOME /home/jenkins

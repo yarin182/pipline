@@ -19,6 +19,12 @@ Replace the line with
 ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
 ```
 
+### all steps including 5 can be skipped by running
+
+```
+./agent-pre-install.sh
+```
+
 ### 3.
 Create a Jenkins user on the host
 
@@ -27,10 +33,13 @@ useradd jenkins
 ```
 
 ### 4.
+Install AWS CLI on the host with aws configure
+
+### 5.
 grant permissions for the Jenkins user
 
 ```
-chown -R jenkins:jenkins /var/run/docker.sock
+chown -R jenkins:jenkins ~/.aws && chown -R jenkins:jenkins ~/.aws/* && cp ~/.aws /home/jenkins/ && chown -R jenkins:jenkins /var/run/docker.sock
 ```
 
 ### Bulid and Push the Jenkins SSH Agent Image

@@ -92,7 +92,7 @@ Container settings -->
 Mounts:
 type=bind,src=/home/jenkins/.aws/,dst=/home/jenkins/.aws/,bind-propagation=shared
 type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock,bind-propagation=shared
-Environment: TZ=Asia/Jerusalem
+type=bind,src=/etc/localtime,dst=/etc/localtime,bind-propagation=shared
 Port bindings: 3100:3100
 Extra Hosts: host.docker.internal:host-gateway
 Remote File System Root: /home/jenkins

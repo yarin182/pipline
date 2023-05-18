@@ -57,7 +57,7 @@ under SCM Choose Git
 Enter the Repository URL and Credentials
 
 ```
-https://github.com/CommuniTakeLtd/Jenkins/pipline
+https://github.com/CommuniTakeLtd/Jenkins/tree/main/pipline
 ```
 
 ### 5. 

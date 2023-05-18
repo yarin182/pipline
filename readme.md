@@ -39,7 +39,7 @@ Install AWS CLI on the host with aws configure
 grant permissions for the Jenkins user
 
 ```
-chown -R jenkins:jenkins ~/.aws && chown -R jenkins:jenkins ~/.aws/* && cp ~/.aws /home/jenkins/ && chown -R jenkins:jenkins /var/run/docker.sock && chmod 700 /home/jenkins/.ssh && chmod 600 /home/jenkins/.ssh/id_rsa && chown -R jenkins:jenkins /home/jenkins/.ssh && chown -R jenkins:jenkins /home/jenkins/.ssh/id_rsa
+chown -R jenkins:jenkins ~/.aws && chown -R jenkins:jenkins ~/.aws/* && cp ~/.aws /home/jenkins/ && chown -R jenkins:jenkins /var/run/docker.sock
 ```
 
 ### Bulid and Push the Jenkins SSH Agent Image
@@ -101,7 +101,6 @@ Credentials: Add DockerHub Credentials
 Container settings -->
 Mounts:
 type=bind,src=/home/jenkins/.aws/,dst=/home/jenkins/.aws/,bind-propagation=shared
-type=bind,src=/home/jenkins/.ssh/,dst=/home/jenkins/.ssh/,bind-propagation=shared
 type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock,bind-propagation=shared
 type=bind,src=/etc/localtime,dst=/etc/localtime,bind-propagation=shared
 Port bindings: 3100:3100

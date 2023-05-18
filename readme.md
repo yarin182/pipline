@@ -54,7 +54,7 @@ Go to the end of the Project under Pipline, under Definition choose Pipline scri
 under SCM Choose Git
 
 ### 4.
-Enter the Repository URL 
+Enter the Repository URL and Credentials
 
 ```
 https://github.com/CommuniTakeLtd/Jenkins/pipline

@@ -54,7 +54,11 @@ Go to the end of the Project under Pipline, under Definition choose Pipline scri
 under SCM Choose Git
 
 ### 4.
-Enter the Repository URL and Credentials
+Enter the Repository URL 
+
+```
+https://github.com/CommuniTakeLtd/Jenkins/pipline
+```
 
 ### 5. 
 In the Git Repository, Insert the public key you want Jenkins to connect via SSH to the Agent Host 

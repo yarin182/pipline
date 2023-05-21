@@ -5,7 +5,7 @@ RUN echo "Installing Packages"
 RUN \
     apt-get update && \
     apt-get install -y --no-install-recommends apt-utils && \
-    apt-get install -y sudo bash apt-transport-https software-properties-common wget curl vim dos2unix openssl ca-certificates iputils-ping zip unzip gnupg jq
+    apt-get install -y sudo bash apt-transport-https software-properties-common wget curl vim dos2unix openssl ca-certificates iputils-ping zip unzip gnupg jq subversion
 
 RUN \
     usermod -aG sudo jenkins && \

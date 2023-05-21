@@ -5,6 +5,7 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
+                    print("working")
                     def imageName = "yarinct/jenkins-ssh-agent"
                     def dockerfileDir = "."
                     def dockerTag = "latest"

@@ -11,7 +11,7 @@ pipeline {
                     def dockerTag = "latest"
                     def dockerImage = docker.build("${imageName}", dockerfileDir)
 
-                    withDockerRegistry([credentialsId: "aws-qa4"]) {
+                    withDockerRegistry([credentialsId: "AKIA23NKQOB4VOALWB4K (newqa4-aws)"]) {
                         dockerImage.push()
                     }
                 }

@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    def imageName = "yarinct/jenkins-ssh-agent"
+                    def dockerfileDir = "."
+                    def dockerTag = "latest"
+                    def dockerImage = docker.build("${imageName}", dockerfileDir)
+
+                    withDockerRegistry([credentialsId: "yarinct-docker"]) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+    }
+}

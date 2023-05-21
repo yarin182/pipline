@@ -17,20 +17,6 @@ COPY ./scripts/* /usr/local/bin/
 COPY ./scripts/* /home/jenkins/
 RUN mkdir -p /var/lib/jenkins
 
-RUN echo "Installing AWS CLI, this may take a while"
-
-RUN \
-    mkdir -p /usr/share/jenkins && \
-    chmod +x /usr/local/bin/env_script.sh && \
-    chmod +x /usr/local/bin/ct_packandsend && \
-    chmod +x /usr/local/bin/docker_installation.sh && \
-    chmod +x /home/jenkins/env_script.sh && \
-    chmod +x /home/jenkins/ct_packandsend && \
-    chmod +x /home/jenkins/docker_installation.sh && \
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/usr/share/jenkins/aws.zip" && \
-    unzip /usr/share/jenkins/aws.zip -d /usr/share/jenkins/ && \
-    /usr/share/jenkins/aws/install
-
 RUN echo "AWS CLI Installed successfully"
 
 RUN echo "Installing Java-11, this may take a while"
@@ -72,25 +58,7 @@ RUN wget https://s3.eu-west-1.amazonaws.com/com.communitake.private/mysql-connec
 
 RUN echo "Deleting Unnecessary Files"
 
-RUN rm -rf /usr/share/jenkins/aws.zip && rm -rf /usr/lib/jvm/jdk-8u121-linux-x64.tar.gz && rm -rf /home/jenkins/ivy2.tar.gz && rm -rf /home/jenkins/scripts.tar.gz
-
-RUN echo "Installing Docker"
-
-RUN \ 
-    sudo install -m 0755 -d /etc/apt/keyrings && \
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
-    sudo chmod a+r /etc/apt/keyrings/docker.gpg 
-
-RUN echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-RUN \
-    apt-get update && \
-    apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-RUN echo "Docker Installed successfully"
+RUN rm -rf /usr/lib/jvm/jdk-8u121-linux-x64.tar.gz && rm -rf /home/jenkins/ivy2.tar.gz && rm -rf /home/jenkins/scripts.tar.gz
 
 ENV HOME /home/jenkins
 ENV AGENT_HOME /home/jenkins

@@ -17,8 +17,6 @@ COPY ./scripts/* /usr/local/bin/
 COPY ./scripts/* /home/jenkins/
 RUN mkdir -p /var/lib/jenkins
 
-RUN echo "AWS CLI Installed successfully"
-
 RUN echo "Installing Java-11, this may take a while"
 
 RUN apt-get install -y openjdk-11-jdk

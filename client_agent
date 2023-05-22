@@ -11,15 +11,11 @@ pipeline {
                     def dockerTag = "latest"
                     def dockerImage = docker.build("${imageName}", dockerfileDir)
                     
-                    // Retrieve the AWS ECR login password
+                    // Execute the AWS ECR login command and retrieve the login password
                     def ecrLoginCommand = sh(script: 'aws ecr get-login-password --region eu-north-1', returnStdout: true).trim()
                     
-                    // Execute the docker login command with AWS ECR credentials
-                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-qa4', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                        withEnv(['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY']) {
-                            sh "echo ${ecrLoginCommand} | docker login --username AWS --password-stdin 746071289977.dkr.ecr.eu-north-1.amazonaws.com"
-                        }
-                    }
+                    // Execute the docker login command with the AWS ECR login password
+                    sh "echo '${ecrLoginCommand}' | docker login --username AWS --password-stdin 746071289977.dkr.ecr.eu-north-1.amazonaws.com"
                     
                     dockerImage.push()
                 }

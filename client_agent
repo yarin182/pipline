@@ -10,8 +10,8 @@ pipeline {
                     def dockerfileDir = "./client-agent"
                     def dockerTag = "latest"
                     def dockerImage = docker.build("${imageName}", dockerfileDir)
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-qa4']]) {
-                        sh 'aws ecr get-login-password | docker login --username AWS --password-stdin 746071289977.dkr.ecr.eu-north-1.amazonaws.com'
+                    withCredentials([usernamePassword(credentialsId: 'aws-qa4', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        sh 'docker login --username $AWS_ACCESS_KEY_ID --password $AWS_SECRET_ACCESS_KEY 746071289977.dkr.ecr.eu-north-1.amazonaws.com'
                     }
                     
                     dockerImage.push()

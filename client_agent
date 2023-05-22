@@ -10,10 +10,10 @@ pipeline {
                     def dockerfileDir = "./client-agent"
                     def dockerTag = "latest"
                     def dockerImage = docker.build("${imageName}", dockerfileDir)
-                    withAWS(region: 'eu-north-1', credentials: 'aws-qa4') {
-                        sh 'aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 746071289977.dkr.ecr.eu-north-1.amazonaws.com'
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-qa4']]) {
+                        sh 'eval $(aws ecr get-login --no-include-email --region eu-north-1)'
+                        sh 'docker login --username AWS --password-stdin 746071289977.dkr.ecr.eu-north-1.amazonaws.com'
                     }
-                    
                     dockerImage.push()
                 }
             }

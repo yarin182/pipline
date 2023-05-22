@@ -57,7 +57,7 @@ under SCM Choose Git
 Enter the Repository URL and Credentials
 
 ```
-https://github.com/CommuniTakeLtd/Jenkins/tree/main/pipline
+https://github.com/CommuniTakeLtd/Jenkins/pipline.git
 ```
 
 ### 5. 
@@ -100,8 +100,8 @@ Docker Agent templates Configuration
 ```
 Lables: ssh-agent
 Name: ssh-agent
-Docker Image: DOCKER-IMAGE tag on DockerHub
-Credentials: Add DockerHub Credentials
+Docker Image: 746071289977.dkr.ecr.eu-north-1.amazonaws.com/jenkins-ssh-agent
+Credentials: Add AWS
 Container settings -->
 Mounts:
 type=bind,src=/home/jenkins/.aws/,dst=/home/jenkins/.aws/,bind-propagation=shared

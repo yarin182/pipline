@@ -10,10 +10,17 @@ pipeline {
                     def dockerfileDir = "./client-agent"
                     def dockerTag = "latest"
                     def dockerImage = docker.build("${imageName}", dockerfileDir)
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-qa4']]) {
-                        sh 'eval $(aws ecr get-login --no-include-email --region eu-north-1)'
-                        sh 'docker login --username AWS --password-stdin 746071289977.dkr.ecr.eu-north-1.amazonaws.com'
+                    
+                    // Retrieve the AWS ECR login password
+                    def ecrLoginCommand = sh(script: 'aws ecr get-login-password --region eu-north-1', returnStdout: true).trim()
+                    
+                    // Execute the docker login command with AWS ECR credentials
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-qa4', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                        withEnv(['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY']) {
+                            sh "echo ${ecrLoginCommand} | docker login --username AWS --password-stdin 746071289977.dkr.ecr.eu-north-1.amazonaws.com"
+                        }
                     }
+                    
                     dockerImage.push()
                 }
             }

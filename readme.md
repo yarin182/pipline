@@ -103,12 +103,14 @@ Name: ssh-agent
 Docker Image: 746071289977.dkr.ecr.eu-north-1.amazonaws.com/jenkins-ssh-agent
 Credentials: Add AWS
 Container settings -->
+Hostname: ssh-agent
 Mounts:
 type=bind,src=/home/jenkins/.aws/,dst=/home/jenkins/.aws/,bind-propagation=shared
 type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock,bind-propagation=shared
 type=bind,src=/etc/localtime,dst=/etc/localtime,bind-propagation=shared
 Port bindings: 3100:3100
 Extra Hosts: host.docker.internal:host-gateway
+Extra Docker Labels: --name ssh-agent
 Remote File System Root: /home/jenkins
 Connect method: Connect with SSH
 Add SSH Credentials - Add the Private Key you inserted into the Dockerfile at Bulid and Push the Jenkins SSH Agent Image Section step 5 
@@ -124,11 +126,13 @@ Name: client-agent
 Docker Image: 746071289977.dkr.ecr.eu-north-1.amazonaws.com/jenkins-client-agent
 Registry Credentials: Add AWS Credentials
 Container settings -->
+Hostname: client-agent
 Mounts: 
 type=bind,src=/home/jenkins/.subversion/,dst=/home/jenkins/.subversion/,bind-propagation=shared
 type=bind,src=/home/android/opt,dst=/opt,bind-propagation=shared
 Port bindings: 3101:3101
 Extra Hosts: host.docker.internal:host-gateway
+Extra Docker Labels: --name client-agent
 Remote File System Root: /home/jenkins
 Connect method: Connect with SSH 
 Add SSH Credentials - Add the Private Key you inserted into the Dockerfile at Bulid and Push the Jenkins SSH Agent Image Section step 5 

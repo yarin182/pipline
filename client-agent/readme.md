@@ -100,10 +100,9 @@ Docker Agent templates Configuration
 ```
 Lables: ssh-agent
 Name: ssh-agent
-Docker Image: 746071289977.dkr.ecr.eu-north-1.amazonaws.com/jenkins-ssh-agent
-Credentials: Add AWS
+Docker Image: 746071289977.dkr.ecr.eu-north-1.amazonaws.com/jenkins-client-agent
+Credentials: Add AWS Credentials
 Container settings -->
-Hostname: ssh-agent
 Mounts:
 type=bind,src=/home/jenkins/.aws/,dst=/home/jenkins/.aws/,bind-propagation=shared
 type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock,bind-propagation=shared
@@ -119,30 +118,9 @@ Port: 22
 JavaPath: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
 ```
 
-```
-Lables: client-agent
-Name: client-agent
-Docker Image: 746071289977.dkr.ecr.eu-north-1.amazonaws.com/jenkins-client-agent
-Registry Credentials: Add AWS Credentials
-Container settings -->
-Hostname: client-agent
-Mounts: 
-type=bind,src=/home/jenkins/.subversion/,dst=/home/jenkins/.subversion/,bind-propagation=shared
-type=bind,src=/home/android/opt,dst=/opt,bind-propagation=shared
-Port bindings: 3101:3101
-Extra Hosts: host.docker.internal:host-gateway
-Remote File System Root: /home/jenkins
-Connect method: Connect with SSH 
-Add SSH Credentials - Add the Private Key you inserted into the Dockerfile at Bulid and Push the Jenkins SSH Agent Image Section step 5 
-Host Key Verification Strategy: Non verifying Verification Strategy
-Advanced -->
-Port: 22
-JavaPath: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
-```
-
 Click on save and apply
 
-### Build a Project with the Agent
+### Build a Project with the SSH Agent
 
 ### 1.
 In Jenkins, Go to the Project you want to build
@@ -154,7 +132,7 @@ Open the configuration Panel for you job
 Under the General section: Check the option ''Restrict where this project can be run''
 
 ### 4.
-Enter the label name configured in the Docker Agent templates Configuration above Under ''Lables'', in this case the label is ''ssh-agent'' or ''client-agent''
+Enter the label name configured in the Docker Agent templates Configuration above Under ''Lables'', in this case the label is ''ssh-agent''
 
 ### 5.
 Click on save and apply
